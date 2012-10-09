@@ -1,0 +1,11 @@
+ECB Project SharePoint Site - Login Information
+
+http://ecbconnect.org/  - always use Internet Explorer (not Mozilla)
+Username: carex\agoldstein
+Password: ECBconnect1
+
+
+SurveyMonkey - Login Information
+Username: kboate
+Password: ecbproject
+
