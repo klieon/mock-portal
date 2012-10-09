@@ -1,3 +1,5 @@
+<?php require_once('Table.class.php'); require_once('stub.php'); ?>
+
 <form id="login">
 	<input type="text" placeholder="Username" name="username" id="username">
 	<input type="password" placeholder="Password" name="password" id="password">
@@ -14,6 +16,13 @@
 		<div class="question">
 			<p>1. Name of agency?</p>
 			<div id="chart1"></div>
+			<?php 
+				$table = new Table($question_data);  
+				$table->tableHeader();
+				$table->tableBody(array('<tr><td>Im the table body</td></tr>'));
+				$table->tableFooter();
+				echo $table->fetchTable();
+			?>
 		</div><!-- .question -->
 		<div class="question">
 			<p>2. Consortium country / region?</p>

@@ -75,13 +75,11 @@ $('document').ready(function(){
 	(function(){
 		$('.chart', '#questions').css('visibility', 'hidden');
 	})();
-
 	//Mod The Sidebar
 	if($('form.jqtransform', '#sidebar').length > 0){
 		$('form.jqtransform', '#sidebar').jqTransform();
 	}
 	$('.priveleged').hide();
-
 	//Trigger the login/logout button update & show Login 
 	if($('#stats', '#header').length > 0){
 		$('#stats a', '#header').on('click', function(event){
@@ -100,7 +98,4 @@ $('document').ready(function(){
 			var option = grabOption($(this));
 			toggleChart(option);
 	});
-
-	//Chart Code ----------------------------------------------------
-	
 });
