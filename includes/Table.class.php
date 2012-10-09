@@ -6,7 +6,6 @@ class Table extends Question {
 	private static $count = 0;
 
 	public function __construct($question_data){
-		echo '<h1>Im a new table object</h1>';
 		$this->question_data = $question_data;
 		self::$count++;
 	}
