@@ -5,7 +5,6 @@ function toggleLogin($this){	//logs in or logs out
 	$(that).toggleClass('loggedin');
 	var text = ($(that).hasClass('loggedin')) ? 'logout' : 'login';
 	$(that).text(text);
-
 	(CONFIG.user.status == 'loggedout') ? $('#login').fadeIn() : logout();
 }
 function login(){
@@ -14,7 +13,7 @@ function login(){
 	$('#login').fadeOut('fast', function(){
 		CONFIG.user.status = 'loggedin';
 		$('#survey1.chart', '#questions').css('visibility','visible').show();
-		$('#sidebar .priveleged, #body #questions').fadeIn();
+		$('.priveleged, #questions', '#sidebar, #header, #body').fadeIn();
 	});
 }
 function logout(){
@@ -38,7 +37,7 @@ function clearErrors(){
 }
 function authenticate(){
 	console.log('Authenticating');
-	CONFIG.user.status = ($('#stats a', '#header').hasClass('loggedin')) ? 'loggedin' : 'loggedout';
+	CONFIG.user.status = ($('#loginout a', '#header').hasClass('loggedin')) ? 'loggedin' : 'loggedout';
 	//Show or hide elements based on CONFIG.user.status
 	var name = $('input#username').val(),
 		pass = $('input#password').val();
@@ -74,16 +73,19 @@ $('document').ready(function(){
 	//Init
 	(function(){
 		$('.chart', '#questions').css('visibility', 'hidden');
+		$('#stats li:first', '#sidebar').addClass('first');
+		$('#stats li:last', '#sidebar').addClass('last');
 	})();
 	//Mod The Sidebar
 	if($('form.jqtransform', '#sidebar').length > 0){
 		$('form.jqtransform', '#sidebar').jqTransform();
 	}
-	$('.priveleged').hide();
+	$('.priveleged', '#sidebar, #header').hide();
 	//Trigger the login/logout button update & show Login 
-	if($('#stats', '#header').length > 0){
-		$('#stats a', '#header').on('click', function(event){
+	if($('#loginout', '#header').length > 0){
+		$('#loginout a').on('click', function(event){
 			event.preventDefault();
+			console.log('clicked');
 			toggleLogin($(this));
 		});
 	}

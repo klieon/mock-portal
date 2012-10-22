@@ -9,6 +9,8 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>Page Title</title>
 	<link rel="stylesheet" href="./styles/styles.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="js/jqtransform.js"></script>
 	<script type="text/javascript" src="js/highcharts/js/highcharts.js" charset="utf-8"></script>

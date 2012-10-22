@@ -1,4 +1,136 @@
 @import 'jqtransform.css';
+/*-- Rest ------------------------------------------------------------------------*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+:focus {
+  outline: 0;
+}
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+}
+blockquote,
+q {
+  quotes: "" "";
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+p {
+  margin: 0px;
+  line-height: 1.2;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 4px 0 0 0;
+}
+/*-- Utility Styles ------------------------------------------------------------------*/
+.clearfix:after {
+  content: ' ';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/*-- Global Styles -------------------------------------------------------------------------------------------------*/
+.heading,
+.question > p {
+  font-family: 'Doppio One', sans-serif;
+  font-size: 12px;
+  color: #333333;
+}
 body {
   background-color: #ffffff;
   background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 200, from(#999999), to(#ffffff));
@@ -60,7 +192,9 @@ body {
   background-image: linear-gradient(top, #ffffff, #ececec);
   filter: progid:dximagetransform.microsoft.gradient(GradientType=0, StartColorStr='#ffffff', EndColorStr='#ececec');
   float: left;
-  width: 20%;
+  /* width: 20%; */
+
+  width: 255px;
   overflow: hidden;
   min-height: 500px;
   border-right: 1px solid #999;
@@ -76,14 +210,48 @@ body {
   text-transform: uppercase;
   font-size: 9pt;
 }
+#sidebar .inner form {
+  margin: 0;
+  padding: 0;
+}
+#sidebar #stats {
+  float: none;
+  margin: 20px 0 0 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+#sidebar #stats li {
+  list-style: none;
+  font-size: 10pt;
+  border-bottom: 1px solid white;
+  border-top: 1px solid #dcdcdc;
+  padding: 6px 0;
+  margin: 0;
+}
+#sidebar #stats li.first {
+  border-top: none;
+}
+#sidebar #stats li.last {
+  border-bottom: none;
+}
+#sidebar span {
+  font-weight: bold;
+  color: #343434;
+  font-size: 11pt;
+}
 #body {
   float: left;
-  width: 79%;
+  /* width: 79%; */
+
+  width: 1020px;
   height: 485px;
   overflow: auto;
 }
 #body .inner {
-  width: 95%;
+  /* width: 95%; */
+
+  width: 900px;
   margin: 8px auto 40px;
 }
 #body .inner .error {
@@ -104,17 +272,25 @@ body {
   font-size: 27pt;
   margin: 30px 23% 0 0;
 }
-#header #stats {
-  float: left;
-  overflow: hidden;
+#header #loginout {
+  width: 175px;
+  height: 63px;
+  padding-top: 20px;
+  float: right;
+  margin: 10px 0 0 0;
+  text-align: right;
+  border-left: 1px solid #CCC;
+  position: relative;
 }
-#header #stats li {
-  list-style: none;
-}
-#header span {
-  font-weight: bold;
+#header #loginout li {
+  margin: 0 0 4px 0;
+  font-size: 10pt;
   color: #343434;
-  font-size: 11pt;
+}
+#header #loginout li#loginoutbtn {
+  position: absolute;
+  right: 0;
+  top: 37px;
 }
 #header a.loggedin {
   background-color: #ff0024;
@@ -181,11 +357,17 @@ body {
   overflow: hidden;
 }
 #questions .question p {
-  font-size: 10pt;
+  font-size: 12pt;
   text-transform: uppercase;
+  margin: 0 0 7px 0;
+  color: #555;
 }
 #questions .question:nth-child(1) {
   margin-top: 0;
+}
+#questions .chart  > p {
+  font-size: 15pt;
+  font-weight: bold;
 }
 #login {
   display: none;

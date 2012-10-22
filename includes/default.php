@@ -2,13 +2,11 @@
 <div id="header">
 	<div class="inner">
 		<h1 id="logo">CARE</h1>
-		<h2 id="title">CARE Reporting Portal</h2>
-		<ul id="stats">
-			<li>Invited / Completed: <span>1500 / 1248</span></li>
-			<li>Survey Status: <span>Active</span></li>
-			<li>Start Date / End Date <span>10-3 / 10-25</span></li>
-			<li>Welcome, <span>Kwame</span> <a href="#">Login</a></li>
-		</ul>
+		<h2 id="title" class="heading">CARE Reporting Portal</h2>
+		<ul id="loginout">
+			<li id="welcome" class="priveleged">Welcome, <span>Kwame</span></li>
+			<li id="loginoutbtn"><a href="#">Login</a></li>
+		</ul><!-- #loginout -->
 	</div><!-- .inner -->
 </div><!-- #header -->
 
@@ -20,7 +18,7 @@
 	</div><!-- #sidebar -->
 	<div id="body">
 		<div class="inner">
-			<?php require_once('./includes/content.php'); ?>
+			<?php require_once("./views/admin-content.php"); ?>
 		</div><!-- .inner -->
 	</div><!-- #body -->
 </div><!-- #wrapper -->
