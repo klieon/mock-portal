@@ -235,7 +235,7 @@ body {
 #sidebar #stats li.last {
   border-bottom: none;
 }
-#sidebar span {
+#sidebar #stats span {
   font-weight: bold;
   color: #343434;
   font-size: 11pt;
