@@ -6,7 +6,7 @@ var CONFIG = function(module){
 				'username': '', //CONFIG.user.username
 				'password': '',
 				'role':'',
-				'status': false
+				'status': ''
 			},
 		roles: {
 			0: 'root', //CONFIG.roles[0]

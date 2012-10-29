@@ -14,32 +14,49 @@ function toggleForm(status){
 }
 //If the pw is wrong throw an error, else log them out
 function authenticate(){
-	console.log('Authenticating');
+	var usr_role = '';
 	//Show or hide elements based on CONFIG.user.status
 	var name = $('input#username').val(),
 		pass = $('input#password').val();
-		CONFIG.user.username = name;
-		CONFIG.user.password = pass;
-		
+		//CONFIG.user.password = pass;
 		switch(name){
+			case 'root':
+				usr_role = 0;
+			break;
 			case 'admin':
-				(pass == 'testpass') ? switchState('login') : error();
-			break;	
-			default: 
-				switchState('log out');
+				usr_role = 1;
+			break;
+			case 'manager': 
+				usr_role = 2;
+			break;
+			case 'user':
+				usr_role = 3;
+			break;
+		}
+		//If they're in the users file and they have a role to do what they are supposed to do then "log them in"
+		if(name in USERS){
+			if(USERS[name].role == usr_role) {
+				CONFIG.user.username = name;
+				CONFIG.user.role = usr_role;
+				switchState('login');
+			} else { 
+				error(); 
+			}
+		} else {
+			switchState('log out');
 		}
 }
 function login(){
- 	console.log('login');
+ 	// console.log('login');
  	clearErrors();
 	$('#login').fadeOut('fast', function(){
 		$('#survey1.chart', '#questions').css('visibility','visible').show();
-		$('.priveleged, #questions', '#sidebar, #header, #body').fadeIn();
+		executePriveleges(CONFIG.user.username);
 		CONFIG.user.status = 'login';
 	});
 }
 function logout(){
-	console.log('logout');
+	// console.log('logout');
 	var $secret = $($('#questions, .priveleged'));
 	$('.chart', '#questions').css('visibility', 'hidden');
 	$secret.removeAttr('style').fadeOut('fast', function(){
@@ -51,7 +68,7 @@ function logout(){
 	});
 }
 function switchState(status){
-	console.log('switchState', status);
+	// console.log('switchState', status);
 	var btn = $('#loginoutbtn a');						//cache the login button
 	$(btn).toggleClass('loggedin');						//toggle the button status
 	//Perform the set action
@@ -75,37 +92,124 @@ function error(){
 function clearErrors(){
 	$('.error').fadeOut();	
 }
-function makeSelection(){
-	//console.log('im a selection');
-}
+//Selects the option from the sidebar dropdown
 function grabOption($this){
-	//console.log('grabbing option');
 	$that = $this;
 	var target = $that.text(),
 		selection = $('select option:contains(' + target +  ')', '#survey_selection').attr('value');
 		return selection;
 }
+//Accepts a role, builds the content of all the allowed modules that role is allowed to see.
+function executePriveleges(role){
+	//Build an array for each type of user: what each role is allowed to see.
+	var target  = '', selector = '', context = '',
+		root 	= { access: ['.priveleged', '#questions'], context: ['#sidebar','#body .inner']},
+		admin 	= { access: ['.priveleged', '#questions'], context: ['#sidebar','#body .inner']},
+		manager = { access: ['#questions','#questions .priveleged'], context: ['#sidebar','#body .inner']},
+		user 	= { access: ['#questions','#questions .priveleged'], context: ['#sidebar','#body .inner']};
+		
+	switch(role){
+		case 'root':
+			target = root;
+		break;
+		case 'admin':
+			target = admin;
+		break;
+		case 'manager':
+			target = manager;
+		break;
+		case 'user':
+			target = user;
+		break;
+	}
+	$.each(target, function(index, val){
+		if(index == 'access') {
+			console.log('selector is: ', val);
+			selector += val;
+		} else {
+			console.log('context is: ', val);
+			context += val;
+		}
+	});
+	console.log(selector, context);
+
+	//Fade in the items from the selected role
+	$(selector, context).fadeIn();
+}
+
+//Handles switching charts in the #body
 function toggleChart(chart){
 	console.log('toggling chart', chart);
-	$('.chart:visible', '#questions').fadeOut('fast',function(){
-		$(chart, '#questions').css('visibility','visible').fadeIn();
+	var targets = $('#questions .chart, .priveleged', '#body');
+	$(targets).removeAttr('style').css('width', '100%').fadeOut('fast',function(){
+		var questions = $('#questions .question, #questions > div');
+		$(questions).css('visibility', '');
+		console.log($(chart, chart + '> div', '#questions'));
+		$(chart).css('visibility','visible').fadeIn();
+	});
+}
+function generateReports(target){
+	console.log('generating reports');
+}
+function listUsers(target){
+	var form  = '<form action="" method="post" id="list_users">';
+		form += '<table width="100%" cellpadding="0" border="0" id="users">';
+	var counter = 0;
+		console.log(USERS);
+		for(key in USERS){
+			//label
+			row = "<tr class='user-"+USERS[key].name;
+			 	if(counter % 2 == 0){ row += " even"; } else { row += " odd"; }
+				row += "'>";
+				row += '<td><input type="checkbox" name="'+USERS[key].name+'"></td>'
+				row += '<td>'+USERS[key].name+'</td>';
+				row += '<td>'+key+'</td>';
+				row += '<td>'+USERS[key].email+'</td>';
+				row += '<td>'+USERS[key].active+'</td>';
+			row += "</tr>";
+			form += row;
+			counter++;
+		}
+		form += '</table><table id="user_controls" width="100%" cellpadding="0" border="0">';
+		form += '<tr><td><input  id="update" type="submit" name="update" value="update"></td>';
+		form += '<td><input  id="deactivate" type="submit" name="deactivate" value="deactivate"></td>';
+		form += '<td><input  id="delete" type="submit" name="delete" value="delete"></td>';
+		form += '</tr></table></form>';
+	$(target).html(form);
+}
+//Toggles Generic Content in the #body .inner
+function toggleContent(selector){
+	//Implement whatever functionality is needed 
+	switch(selector){
+		case '#all_users':
+			listUsers(selector);
+		break;
+		case '#raw_question_data':
+			generateReports(selector);
+		break;
+	}
+	$('#body .inner > div:visible').fadeOut('fast',function(){
+		$(selector, '#body .inner').css('visibility','visible').fadeIn('fast');
 	});
 }
 //Implementation ------------------------------------------------------------------------------------------------------------------------------------------------
 $('document').ready(function(){
-	//Init -- hide some stuff and add some dynamic classes to the sidebar ul
-	(function(){
-		$('.chart', '#questions').css('visibility', 'hidden');
-		$('#stats li:first', '#sidebar').addClass('first');
-		$('#stats li:last', '#sidebar').addClass('last');
+	//Initialize:
+	//(function(){})();
+	//hide some stuff
+	$('#questions .chart, #all_users, #raw_question_data', '#body .inner').css('visibility', 'hidden');
+	//Add some dynamic classes to the sidebar ul
+	$('#stats li:first', '#sidebar').addClass('first');
+	$('#stats li:last', '#sidebar').addClass('last');
 
-		//Mod The Sidebar
-		if($('form.jqtransform', '#sidebar').length > 0){
-			$('form.jqtransform', '#sidebar').jqTransform();
-		}
-		$('.priveleged', '#sidebar, #header').hide();
-	})();
-	//Trigger the login/logout button update & show Login 
+	//Mod The Sidebar
+	if($('form.jqtransform', '#sidebar').length > 0){
+		$('form.jqtransform', '#sidebar').jqTransform();
+	}
+	//Hide the initial items that are priviledged
+	$('.priveleged','#sidebar, #header, #body .inner').hide();
+
+	//Bind the login/logout button update & show Login 
 	if($('#loginout', '#header').length > 0){
 		$('#loginout a').on('click', function(event){
 			event.preventDefault();
@@ -122,4 +226,11 @@ $('document').ready(function(){
 			var option = grabOption($(this));
 			toggleChart(option);
 	});
+	//Sidebar controls
+	$('#stats a, #admin_controls a', '#sidebar .priveleged').on('click', function(event){
+		event.preventDefault();
+		var selector = '#' + $(this).attr('href');
+		toggleContent(selector);
+	});
+
 });

@@ -7,7 +7,11 @@
 			<option value="#survey3">Agency HQ Self-Assessment</option>
 		</select>
 	</form>
+	<ul id="admin_controls">
+		<li class="user"><a href="all_users">All Users</a></li>
+	</ul><!-- #admin-controls -->
 	<ul id="stats">
+		<li class="excel"><a href="raw_question_data">Raw Question Data</a></li>
 		<li>Invited / Completed: <span>1500 / 1248</span></li>
 		<li>Survey Status: <span>Active</span></li>
 		<li>Start Date / End Date <span>10-3 / 10-25</span></li>

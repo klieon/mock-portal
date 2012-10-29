@@ -41,6 +41,9 @@ h1, h2, h3, h4 { margin: 4px 0 0 0; }
 .heading, .question > p {
 	.header(12px, #333);
 }
+/*-- Colors -------------------------------------------------------------------------------------------------*/
+@accent_color: #e06f1d;
+
 
 body {
 	background-color: #ffffff;
@@ -122,7 +125,7 @@ body {
 			padding: 0;
 		}
 	}
-	#stats {
+	#stats, #admin_controls{
 		float: none;
 		margin: 20px 0 0 0;
 		padding: 0;
@@ -141,6 +144,20 @@ body {
 			}
 			&.last {
 				border-bottom: none;
+			}
+			&.user {
+				background: url('../imgs/user.png') no-repeat 0 4px;
+				padding-left: 24px;
+			}
+			&.excel {
+				background: url('../imgs/excel.png') no-repeat 0 4px;
+				padding-left: 24px;
+			}
+			a {
+				color: #333;
+				&:hover {
+					color: @accent_color;
+				}
 			}
 		}
 		span {
@@ -173,13 +190,15 @@ body {
 }
 #header {
 	#logo {
-		margin: 0 12% 0 0;
+		margin: 9px 15px 0 0;
 		text-indent: -9999px;
-		background: url('../imgs/logo.png');
+		background: url('../imgs/logo.png') no-repeat 0 0;
 		width: 72px;
-		height: 94px;
+		height: 84px;
 		float: left;
-	}
+		border-right: 1px solid #CCC;
+		padding: 0 118px 0 0;
+ 	}
 	#title {
 		float: left;
 		font-size: 27pt;
@@ -319,9 +338,78 @@ body {
 		margin: 0 auto 4px;
 	}
 }
-.jqTransformSelectWrapper {
-	ul {
-		height: auto;
+#list_users {
+	margin-top: 22px;
+	table#users {
+		background: #eee;
+		border-bottom: 1px solid #777;
+		box-shadow: 0px 1px 10px #999;
+		tr {
+			padding: 4px 0;
+			td {
+				border-top: 1px solid white;
+				border-bottom: 1px solid #AAA;
+				padding: 4px 0;
+
+				input[type="checkbox"]{
+					margin-left: 8px;
+				}
+			}
+			&:last-child{
+				td {
+					border-bottom: none;
+				}
+			}
+			&.even{
+
+			}
+			&.odd{
+
+			}
+		}
+	}
+	table#user_controls {
+		#update{
+		color: white;
+		font-weight: bold;
+		line-height: 1.4545em;
+		text-shadow: 0 -1px #00692C;
+		text-align: center;
+		background-color: #0079C1;
+		background: -moz-linear-gradient(center bottom,#0079C1 0,#0079C1 20%,#00A1FF 100%);
+		background: -webkit-gradient(linear,left bottom,left top,color-stop(0%,#0079C1),color-stop(20%,#0079C1),color-stop(100%,#00A1FF));
+		background: -webkit-linear-gradient(bottom,#0079C1 0,#0079C1 20%,#00A1FF 100%);
+		background: -ms-linear-gradient(bottom,#0079C1 0,#0079C1 20%,#00A1FF 100%);
+		background: -o-linear-gradient(bottom,#0079C1 0,#0079C1 20%,#00A1FF 100%);
+		background: linear-gradient(bottom,#0079C1 0,#0079C1 20%,#00A1FF 100%);
+		-moz-box-shadow: 0 1px #4dbeff inset;
+		-webkit-box-shadow: 0 1px #4DBEFF inset;
+		box-shadow: 0 1px #4DBEFF inset;
+		-webkit-border-radius: 5px 5px 5px 5px;
+		-moz-border-radius: 5px 5px 5px 5px;
+		border-radius: 5px 5px 5px 5px;
+		border-color: #0079C1 #00588B #004B77;
+		border-style: solid;
+		border-width: 1px;
+		height: 1.4545em;
+		padding: 7px 15px 8px;
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
+		cursor: pointer;
+		moz-box-shadow: 0 1px rgba(255,255,255,0.2),0 1px #4dbeff inset;
+		-webkit-box-shadow: 0 1px rgba(255, 255, 255, 0.2),0 1px #4DBEFF inset;
+		box-shadow: 0 1px rgba(255, 255, 255, 0.2),0 1px #4DBEFF inset;
+		color: #EEE;
+		text-shadow: 0px 0px 2px black;
+		margin: 5px 0 0 0;
+		}
+		#deactivate{
+
+		}
+		#delete{
+
+		}
 	}
 }
 @import 'jqtransform.css';
