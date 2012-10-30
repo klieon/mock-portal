@@ -131,6 +131,13 @@ h4 {
   font-size: 12px;
   color: #333333;
 }
+.stripes li,
+.stripes td {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #ffffff;
+  padding: 6px 0;
+  margin: 0;
+}
 /*-- Colors -------------------------------------------------------------------------------------------------*/
 body {
   background-color: #ffffff;
@@ -233,10 +240,6 @@ body {
 #sidebar #admin_controls li {
   list-style: none;
   font-size: 10pt;
-  border-bottom: 1px solid white;
-  border-top: 1px solid #dcdcdc;
-  padding: 6px 0;
-  margin: 0;
 }
 #sidebar #stats li.first,
 #sidebar #admin_controls li.first {
@@ -248,8 +251,8 @@ body {
 }
 #sidebar #stats li.user,
 #sidebar #admin_controls li.user {
-  background: url('../imgs/user.png') no-repeat 0 4px;
-  padding-left: 24px;
+  background: url('../imgs/user.png') no-repeat 0 0px;
+  padding: 2px 0 0px 24px;
 }
 #sidebar #stats li.excel,
 #sidebar #admin_controls li.excel {
@@ -495,10 +498,42 @@ body {
   font-size: 12pt;
   text-transform: uppercase;
   margin: 0 0 7px 0;
-  color: #555;
+  color: #EEE;
   padding: 10px 10px 8px;
-  border: 1px solid #777;
-  background: #eee;
+  border: 1px solid black;
+  background: #333;
+  text-shadow: 1px 1px 0px black;
+}
+#questions .question table {
+  margin: 10px 0 0 0;
+  background: #EEE;
+  border: 1px solid #555;
+}
+#questions .question table tr td {
+  color: #333;
+  padding: 4px 0;
+}
+#questions .question table tr td:first-child {
+  padding-left: 4px;
+}
+#questions .question table tr td:nth-child(2),
+#questions .question table tr td:nth-child(3) {
+  text-align: center;
+}
+#questions .question table tr.question_title td {
+  background: #EEE;
+  padding: 10px 0 10px 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 11pt;
+  color: #333;
+}
+#questions .question table tr.headings td {
+  background: #abbfd7;
+  border-top: 1px solid #4b719f;
+  border-bottom: 1px solid #4b719f;
+  color: #222;
 }
 #questions .question:nth-child(1) {
   margin-top: 0;
