@@ -18,7 +18,6 @@
 	<script type="text/javascript" src="js/config.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/users.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/data.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/chart.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/global.js" charset="utf-8"></script>
 </head>
 <body>
