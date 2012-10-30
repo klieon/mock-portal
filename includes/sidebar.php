@@ -1,5 +1,8 @@
+<h1 id="logo">CARE</h1>
+
 <div class="priveleged">
-	<p>Please Select a survey:</p>
+	<p id="welcome">Welcome, <span>Kwame</span></p>
+	<p id="select_survey">Please Select a survey:</p>
 	<form id="survey_selection" class="jqtransform clearfix" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		<select>
 			<option value="#survey1">Consortium Self-Assessment Survey</option>
@@ -7,6 +10,7 @@
 			<option value="#survey3">Agency HQ Self-Assessment</option>
 		</select>
 	</form>
+	<p>Stats &amp; Settings</p>
 	<ul id="admin_controls">
 		<li class="user"><a href="all_users">All Users</a></li>
 	</ul><!-- #admin-controls -->

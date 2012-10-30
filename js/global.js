@@ -170,11 +170,11 @@ function listUsers(target){
 			form += row;
 			counter++;
 		}
-		form += '</table><table id="user_controls" width="100%" cellpadding="0" border="0">';
-		form += '<tr><td><input  id="update" type="submit" name="update" value="update"></td>';
-		form += '<td><input  id="deactivate" type="submit" name="deactivate" value="deactivate"></td>';
-		form += '<td><input  id="delete" type="submit" name="delete" value="delete"></td>';
-		form += '</tr></table></form>';
+		form += '</table><ul id="user_controls">';
+		form += '<li id="update"><input type="submit" name="update" value="update"></li>';
+		form += '<li id="deactivate"><input type="submit" name="deactivate" value="deactivate"></li>';
+		form += '<li id="delete"><input type="submit" name="delete" value="delete"></li>';
+		form += '</ul></form>';
 	$(target).html(form);
 }
 //Toggles Generic Content in the #body .inner
