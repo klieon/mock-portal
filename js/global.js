@@ -220,8 +220,10 @@ function renderCharts(){
 		// globally available
 		var charts = ['chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'chart6', 'chart7', 'chart8', 'chart9', 'chart10', 'chart11', 'chart12']; 
 		for(var i = 0; i < charts.length; i++){
+			console.log('#'+charts[i], '<p>'+data[charts[i]].questionData.name+'</p>');
 			window.chart = charts[i];
 			chart = new Highcharts.Chart(data[chart]);
+			$('#'+charts[i]).before().prepend('<p>'+data[charts[i]].questionData.name+'</p>');
 		}
 		processTable(data);
 	} //close chart check
