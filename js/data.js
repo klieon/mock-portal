@@ -141,13 +141,13 @@ var data = {
 	chart3: {
 			chart: {
 			renderTo: 'chart3',
-			type: 'line'
+			type: 'bar'
 		},
 			title: {
-			text: 'Fruit Consumption'
+			text: 'Name of organisational department or division completing the survey'
 			},
 			xAxis: {
-			categories: ['Apples', 'Bananas', 'Oranges']
+			categories: ['Emergency Response and Preparedness', 'Emergency Response and Preparedness', 'Emergency Group', 'Humanitarian department', 'Emergencies Unit', 'PROGRAMME & Unité  Suivi Evaluation', 'Emergency Department', 'Emergency Department', 'SAN/DRR/RU', 'SAN/DRR/RU', 'Program Coordination Unit', 'Program Coordination Unit', 'Indonesia Response Team', 'Indonesia Response Team', 'Departement Reduction des Risques et Reponses aux urgences', 'Urgence', 'Programa de Gestión d Rieso y Adaptación', 'Programa de Gestión d Rieso y Adaptación', 'CRS BOLIVIA', 'CRS BOLIVIA', 'Emergency Response Team', 'emergency', 'WORLD VISION NIGER', 'Senior Management Team', 'Humanitarian & Emergency Affairs (HEA)', 'Risk Reduction and Response Unit', 'Humanitarian and Emergency Affairs', 'Country Management', 'Program Design and Quality Unit']
 			},
 			yAxis: {
 			title: {

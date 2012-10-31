@@ -18,7 +18,7 @@ function authenticate(){
 	//Show or hide elements based on CONFIG.user.status
 	var name = $('input#username').val(),
 		pass = $('input#password').val();
-		//CONFIG.user.password = pass;
+		CONFIG.user.password = pass;
 		switch(name){
 			case 'root':
 				usr_role = 0;
@@ -40,10 +40,15 @@ function authenticate(){
 				CONFIG.user.role = usr_role;
 				switchState('login');
 			} else { 
-				error(); 
+				//This will only fire once you check against a pw
+				error();
 			}
 		} else {
-			switchState('log out');
+			if(CONFIG.user.username == "" || CONFIG.user.username == null){
+				error();	
+			} else {
+				switchState('log out');
+			}
 		}
 }
 function login(){
@@ -139,7 +144,7 @@ function executePriveleges(role){
 
 //Handles switching charts in the #body
 function toggleChart(chart){
-	console.log('toggling chart', chart);
+	//console.log('toggling chart', chart);
 	var targets = $('#questions .chart, .priveleged', '#body');
 	$(targets).removeAttr('style').css('width', '100%').fadeOut('fast',function(){
 		var questions = $('#questions .question, #questions > div');

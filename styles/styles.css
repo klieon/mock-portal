@@ -544,6 +544,7 @@ body {
 #questions .chart  > p {
   font-size: 15pt;
   font-weight: bold;
+  margin-top: 25px;
 }
 #login {
   display: none;
