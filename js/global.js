@@ -1,6 +1,6 @@
 //App Functions
 function toggleForm(status){
-	console.log('toggleForm', status);
+	//console.log('toggleForm', status);
 	var login = $('#login'),
 		$login = $(login);
 	//If they arent logged in show the form
@@ -170,12 +170,8 @@ function listUsers(target){
 			form += row;
 			counter++;
 		}
-		form += '</table><ul id="user_controls">';
-		form += '<li id="update"><input type="submit" name="update" value="update"></li>';
-		form += '<li id="deactivate"><input type="submit" name="deactivate" value="deactivate"></li>';
-		form += '<li id="delete"><input type="submit" name="delete" value="delete"></li>';
-		form += '</ul></form>';
-	$(target).html(form);
+		form += '</table></form>';
+	$(target).append(form);
 }
 //Toggles Generic Content in the #body .inner
 function toggleContent(selector){
@@ -251,12 +247,28 @@ function renderTable(obj, tableData){
 
 		//Calculate response rate and print the rows 
 		for(var i = 0; i < choices.length; i++){
-			var rate = (tableData.responses[i].count / total) * 100;
+			var rate = ((tableData.responses[i].count / total) * 100).toPrecision(3);
 				rows += '<tr class="response"><td>'+choices[i]+'</td>'+ '<td>' + rate +'%</td>' + '<td>'+ tableData.responses[i].count + '</td></tr>';
 		}
 		rows += '<tr class="total"><td></td><td>Total Responses</td>' + '<td>'+ total + '</td></tr>'
 		table += tableStart + question_title + headings + rows + '</table>';
 		$('#'+obj.chart['renderTo']).after().append(table);
+}
+function resetAclForm(){
+	$('#success', '#acl_controls').removeAttr('style').fadeOut();
+	$('form, #user_controls', '#acl_controls').removeAttr('style');
+}
+function aclFormSuccess(){
+	var timer = window.setTimeout(function(){
+		console.log('in the timer callback');
+		$('#acl_controls').animate({
+			paddingTop: 0,
+			height: 0
+		});
+		$('#acl_controls').removeAttr('style');
+		resetAclForm();
+		window.clearTimeout(timer);
+	}, 2000);
 }
 //Implementation ------------------------------------------------------------------------------------------------------------------------------------------------
 $('document').ready(function(){
@@ -303,4 +315,19 @@ $('document').ready(function(){
 		var selector = '#' + $(this).attr('href');
 		toggleContent(selector);
 	});
+	//All users update
+	$('a.acl_controls').on('click', function(e){
+		e.preventDefault();
+		console.log('click');
+		$(this).prev().animate({
+			height: '225',
+			paddingTop: '10'
+		});
+	});
+	$('#user_controls').on('click', function(event){
+		event.preventDefault();
+		$('form, #user_controls', '#acl_controls').fadeOut('fast', function(){
+			$('#success', '#acl_controls').fadeIn('fast', aclFormSuccess());
+		});
+	})
 });

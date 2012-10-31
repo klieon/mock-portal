@@ -59,10 +59,7 @@
 	</div><!-- #survey3 -->
 </div><!-- #questions -->
 
-<div id="all_users" class="priveleged" style="display: none;">
-	all users
-</div><!-- #all_users -->
-
+<?php require_once('all_users.php'); ?>
 <div id="raw_question_data" class="priveleged" style="display: none;">
 	raw question data 
 </div><!-- raw_question_data -->

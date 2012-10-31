@@ -4,27 +4,50 @@ var data = {
 			renderTo: 'chart1',
 			type: 'column'
 			},
+		//Title of chart
 		title: {
-			text: 'Fruit Consumption'
+			text: 'Name of Agency'
 		},
-		//expects an array of text
+		//Key for the x-axis
 		xAxis: {
-			categories: ['Apples', 'Bananas', 'Oranges']
+			categories: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee']
 		},
 		yAxis: {
 			title: {
-				text: 'Fruit eaten'
+				text: 'Responses'
 			}
 		},
-		//expects an array of objects
-		series: [{
-			name: 'Jane',
-			data: [1, 0, 4]
+		//Array of Objects - Each of the objects represent a choice (the key ), the values in there are the selections (the bars)
+		series: [
+		{
+			name: 'CARE International',
+			data: [1]
 		}, 
 		{
-			name: 'John',
-			data: [5, 7, 3]
-		}],
+			name: 'World Vision International',
+			data: [4]
+		},
+		{
+			name: 'Save the Children',
+			data: [5]
+		},
+		{
+			name: 'Catholic Relief Services',
+			data: [3]
+		},
+		{
+			name: 'Mercy Corps',
+			data: [1]
+		},
+		{
+			name: 'Oxfam GB',
+			data: [8]
+		},
+		{
+			name: 'International Rescue Committee',
+			data: [2]
+		}
+		],
 		questionData: {
 			name: 'Name of agency?',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
@@ -62,59 +85,55 @@ var data = {
 	},
 	chart2: {
 			chart: {
-			renderTo: 'chart2',
-			type: 'pie'
-		},
+				renderTo: 'chart2',
+				type: 'pie'
+			},
 			title: {
-			text: 'Fruit Consumption'
+				text: 'Consortium country or region'
 			},
 			xAxis: {
-			categories: ['Apples', 'Bananas', 'Oranges']
+				categories: ['Bangladesh', 'Bolivia', 'Horn of Africa', 'Indonesia', 'Niger']
 			},
 			yAxis: {
 			title: {
-			   text: 'Fruit eaten'
+			   text: 'Responses'
 			}
 		},
 		series: [{
-			name: 'Jane',
-			data: [1, 0, 4]
-		}, 
-		{
-			name: 'John',
-			data: [5, 7, 3]
+			type: 'pie',
+			name: 'Consortium country / region',
+			data: [
+			['Bangladesh', 5],
+			['Bolivia', 4],
+			['Horn of Africa', 1],
+			['Indonesia', 6],
+			['Niger', 6]
+			]
 		}],
 		questionData: {
 			name: 'Consortium country / region?',
-			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			choices: ['Bangladesh', 'Bolivia', 'Horn of Africa', 'Indonesia', 'Niger'],
 			responses: [{
-				name: 'CARE International',
-				count: 2
-			},
-			{
-				name: 'World Vision International',
-				count: 7
-			},
-			{
-				name: 'CARE International',
-				count: 8
-			},
-			{
-				name: 'Save the Children',
-				count: 3
-			},
-			{
-				name: 'Catholic Relief Services',
-				count: 1
-			},
-			{
-				name: 'Mercy Corps',
+				name: 'Bangladesh',
 				count: 5
 			},
 			{
-				name: 'International Rescue Committee',
+				name: 'Bolivia',
 				count: 4
-			}],
+			},
+			{
+				name: 'Horn of Africa',
+				count: 1
+			},
+			{
+				name: 'Indonesia',
+				count: 6
+			},
+			{
+				name: 'Niger',
+				count: 6
+			}
+			],
 			answeredQuestions: 6,
 			skippedQuestions: 0
 		}

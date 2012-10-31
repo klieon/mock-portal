@@ -283,7 +283,7 @@ body {
   /* width: 95%; */
 
   width: 95%;
-  margin: 8px auto 40px;
+  margin: 0px auto 40px;
 }
 #body .inner .error {
   display: none;
@@ -574,7 +574,7 @@ body {
   margin: 0 auto 4px;
 }
 #list_users {
-  margin-top: 25px;
+  margin-top: 0px;
 }
 #list_users table#users {
   background: #eee;
@@ -595,14 +595,51 @@ body {
 #list_users table#users tr:last-child td {
   border-bottom: none;
 }
-#list_users #user_controls li {
+#all_users #acl_controls {
+  height: 0;
+  overflow: hidden;
+  background: #333;
+  border: 1px solid #000;
+  border-top: 0px;
+  border-bottom: 0px;
+  color: #eee;
+  padding: 0 7px 0 7px;
+}
+#all_users #acl_controls form {
+  width: 400px;
+  margin: 0 0 0 265px;
   float: left;
-  margin: 0 360px 0 0;
 }
-#list_users #user_controls li:last-child {
-  margin-right: 0;
+#all_users #acl_controls form input[type="text"] {
+  border: 1px solid black;
+  padding: 5px 10px;
+  display: block;
+  width: 90%;
+  background: #EEE;
+  font-size: 14pt;
+  font-weight: normal;
 }
-#list_users #user_controls #update input {
+#all_users .acl_controls {
+  display: block;
+  background: #333;
+  padding: 10px 0 7px 0;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  border-radius: 0 0 9px 9px;
+  border: 1px solid black;
+  border-top: 0;
+  margin-bottom: 10px;
+}
+#all_users #user_controls {
+  width: 100px;
+  float: right;
+  margin: 0 19px 0 0;
+}
+#all_users #user_controls li {
+  margin: 0;
+}
+#all_users #user_controls #update input {
   color: #eeeeee;
   font-weight: bold;
   line-height: 1.4545em;
@@ -641,7 +678,7 @@ body {
   text-shadow: 0px 0px 2px black;
   margin: 5px 0 0 0;
 }
-#list_users #user_controls #deactivate input {
+#all_users #user_controls #deactivate input {
   color: #eeeeee;
   font-weight: bold;
   line-height: 1.4545em;
@@ -680,7 +717,7 @@ body {
   text-shadow: 0px 0px 2px black;
   margin: 5px 0 0 0;
 }
-#list_users #user_controls #delete input {
+#all_users #user_controls #delete input {
   color: #eeeeee;
   font-weight: bold;
   line-height: 1.4545em;
@@ -718,4 +755,24 @@ body {
 
   text-shadow: 0px 0px 2px black;
   margin: 5px 0 0 0;
+}
+#all_users #user_controls input {
+  margin: 0;
+  min-width: 75px;
+}
+#all_users #success {
+  width: 400px;
+  margin: 0 auto;
+  border: 4px solid green;
+  padding: 4px 10px;
+  line-height: 1.4;
+  background: black;
+  display: none;
+}
+#all_users #success h1 {
+  font-size: 17pt;
+  font-weight: bold;
+}
+#all_users #success p {
+  text-align: center;
 }
