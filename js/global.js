@@ -264,10 +264,11 @@ function aclFormSuccess(){
 		$('#acl_controls').animate({
 			paddingTop: 0,
 			height: 0
+		}, 'fast', function(){
+			$('#acl_controls').removeAttr('style');
+			resetAclForm();
+			window.clearTimeout(timer);
 		});
-		$('#acl_controls').removeAttr('style');
-		resetAclForm();
-		window.clearTimeout(timer);
 	}, 2000);
 }
 //Implementation ------------------------------------------------------------------------------------------------------------------------------------------------
