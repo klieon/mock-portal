@@ -28,9 +28,36 @@ var data = {
 		questionData: {
 			name: 'Name of agency?',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 1
+			},
+			{
+				name: 'World Vision International',
+				count: 4
+			},
+			{
+				name: 'CARE International',
+				count: 5
+			},
+			{
+				name: 'Save the Children',
+				count: 3
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 1
+			},
+			{
+				name: 'Mercy Corps',
+				count: 8
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 2
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart2: {
@@ -60,9 +87,36 @@ var data = {
 		questionData: {
 			name: 'Consortium country / region?',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 2
+			},
+			{
+				name: 'World Vision International',
+				count: 7
+			},
+			{
+				name: 'CARE International',
+				count: 8
+			},
+			{
+				name: 'Save the Children',
+				count: 3
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 1
+			},
+			{
+				name: 'Mercy Corps',
+				count: 5
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 4
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart3: {
@@ -92,9 +146,36 @@ var data = {
 		questionData: {
 			name: 'Name of organisational department or division completing the survey (e.g. Emergency Dept, Risk Reduction Dept, etc.)',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 3
+			},
+			{
+				name: 'World Vision International',
+				count: 4
+			},
+			{
+				name: 'CARE International',
+				count: 1
+			},
+			{
+				name: 'Save the Children',
+				count: 2
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 8
+			},
+			{
+				name: 'Mercy Corps',
+				count: 9
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 10
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart4: {
@@ -124,9 +205,36 @@ var data = {
 		questionData: {
 			name: 'Number of staff participating in the survey.',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 0
+			},
+			{
+				name: 'World Vision International',
+				count: 8
+			},
+			{
+				name: 'CARE International',
+				count: 3
+			},
+			{
+				name: 'Save the Children',
+				count: 2
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 5
+			},
+			{
+				name: 'Mercy Corps',
+				count: 10
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 2
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart5: {
@@ -158,9 +266,36 @@ var data = {
 		questionData: {
 			name: 'Name of agency?',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 2
+			},
+			{
+				name: 'World Vision International',
+				count: 6
+			},
+			{
+				name: 'CARE International',
+				count: 7
+			},
+			{
+				name: 'Save the Children',
+				count: 1
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 4
+			},
+			{
+				name: 'Mercy Corps',
+				count: 2
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 3
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart6: {
@@ -190,6 +325,34 @@ var data = {
 		questionData: {
 			name: 'Consortium country / region?',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 3
+			},
+			{
+				name: 'World Vision International',
+				count: 5
+			},
+			{
+				name: 'CARE International',
+				count: 2
+			},
+			{
+				name: 'Save the Children',
+				count: 1
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 1
+			},
+			{
+				name: 'Mercy Corps',
+				count: 9
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 0
+			}],
 			answeredQuestions: 6,
 			skippedQuestions: 0,
 			responseCount: 6
@@ -222,9 +385,36 @@ var data = {
 		questionData: {
 			name: 'Name of organisational department or division completing the survey (e.g. Emergency Dept, Risk Reduction Dept, etc.)',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 3
+			},
+			{
+				name: 'World Vision International',
+				count: 9
+			},
+			{
+				name: 'CARE International',
+				count: 4
+			},
+			{
+				name: 'Save the Children',
+				count: 2
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 1
+			},
+			{
+				name: 'Mercy Corps',
+				count: 0
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 2
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart8: {
@@ -254,9 +444,36 @@ var data = {
 		questionData: {
 			name: 'Number of staff participating in the survey.',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 11
+			},
+			{
+				name: 'World Vision International',
+				count: 2
+			},
+			{
+				name: 'CARE International',
+				count: 5
+			},
+			{
+				name: 'Save the Children',
+				count: 8
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 3
+			},
+			{
+				name: 'Mercy Corps',
+				count: 7
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 2
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart9: {
@@ -288,9 +505,36 @@ var data = {
 		questionData: {
 			name: 'Name of agency?',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 4
+			},
+			{
+				name: 'World Vision International',
+				count: 2
+			},
+			{
+				name: 'CARE International',
+				count: 1
+			},
+			{
+				name: 'Save the Children',
+				count: 7
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 3
+			},
+			{
+				name: 'Mercy Corps',
+				count: 8
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 1
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart10: {
@@ -320,9 +564,36 @@ var data = {
 		questionData: {
 			name: 'Consortium country / region?',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 2
+			},
+			{
+				name: 'World Vision International',
+				count: 7
+			},
+			{
+				name: 'CARE International',
+				count: 8
+			},
+			{
+				name: 'Save the Children',
+				count: 1
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 3
+			},
+			{
+				name: 'Mercy Corps',
+				count: 12
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 3
+			}],
 			answeredQuestions: 6,
 			skippedQuestions: 0,
-			responseCount: 6
 		}
 	},
 	chart11: {
@@ -352,9 +623,36 @@ var data = {
 		questionData: {
 			name: 'Name of organisational department or division completing the survey (e.g. Emergency Dept, Risk Reduction Dept, etc.)',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 3
+			},
+			{
+				name: 'World Vision International',
+				count: 2
+			},
+			{
+				name: 'CARE International',
+				count: 9
+			},
+			{
+				name: 'Save the Children',
+				count: 11
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 4
+			},
+			{
+				name: 'Mercy Corps',
+				count: 3
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 1
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	},
 	chart12: {
@@ -384,9 +682,36 @@ var data = {
 		questionData: {
 			name: 'Number of staff participating in the survey.',
 			choices: ['CARE International', 'World Vision International', 'Save the Children', 'Catholic Relief Services', 'Mercy Corps', 'Oxfam GB', 'International Rescue Committee'],
+			responses: [{
+				name: 'CARE International',
+				count: 4
+			},
+			{
+				name: 'World Vision International',
+				count: 2
+			},
+			{
+				name: 'CARE International',
+				count: 1
+			},
+			{
+				name: 'Save the Children',
+				count: 3
+			},
+			{
+				name: 'Catholic Relief Services',
+				count: 5
+			},
+			{
+				name: 'Mercy Corps',
+				count: 2
+			},
+			{
+				name: 'International Rescue Committee',
+				count: 3
+			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
-			responseCount: 6
+			skippedQuestions: 0
 		}
 	}
 } //ends data wrapper

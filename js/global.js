@@ -215,12 +215,11 @@ function striper(element, start){
 	$(el+':odd').after(start).addClass('odd');
 }
 function renderCharts(){
-	console.log('rendering charts');
 	if($('.chart').length > 0){
 		// globally available
 		var charts = ['chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'chart6', 'chart7', 'chart8', 'chart9', 'chart10', 'chart11', 'chart12']; 
 		for(var i = 0; i < charts.length; i++){
-			console.log('#'+charts[i], '<p>'+data[charts[i]].questionData.name+'</p>');
+			//console.log('#'+charts[i], '<p>'+data[charts[i]].questionData.name+'</p>');
 			window.chart = charts[i];
 			chart = new Highcharts.Chart(data[chart]);
 			$('#'+charts[i]).before().prepend('<p>'+data[charts[i]].questionData.name+'</p>');
@@ -233,18 +232,31 @@ function processTable(obj){
 		renderTable(data[node], data[node].questionData);
 	}
 }
-function renderTable(id, tableData){
-	var table = '', rows = '';
-	var tableStart			= '<table width="100%" cellpadding="0" cellspacing="0" class="'+id.chart["renderTo"]+' stripes">',
+function calculateTotal(count, responses){
+	var total = 0;
+	for(var i = 0; i < count; i++){	
+		total = total + responses[i].count;
+	}
+	return total;
+}
+function renderTable(obj, tableData){
+	//console.log('rendering table. tableData is: ', tableData);
+	var table = '', rows = '', choices = tableData.choices;
+	var tableStart			= '<table width="100%" cellpadding="0" cellspacing="0" class="'+obj.chart["renderTo"]+' stripes">',
 		question_title		= '<tr class="question_title"><td>'+tableData.name+'</td></tr>',
 		headings 			= '<tr class="headings"><td>Answer Options</td><td>Response Percent</td><td>Response</td></tr>';
-	
-		for(i = 0; i < tableData.choices.length; i++){
-			console.log(tableData.name);
-			rows += '<tr class="response"><td>'+tableData.choices[i]+'</td>'+ '<td>' + 16.7 +'%</td>' + '<td>'+ 1 + '</td></tr>';
+		
+		//Calculate the total number of responses
+		var total = calculateTotal(choices.length, tableData.responses);
+
+		//Calculate response rate and print the rows 
+		for(var i = 0; i < choices.length; i++){
+			var rate = (tableData.responses[i].count / total) * 100;
+				rows += '<tr class="response"><td>'+choices[i]+'</td>'+ '<td>' + rate +'%</td>' + '<td>'+ tableData.responses[i].count + '</td></tr>';
 		}
+		rows += '<tr class="total"><td></td><td>Total Responses</td>' + '<td>'+ total + '</td></tr>'
 		table += tableStart + question_title + headings + rows + '</table>';
-		$('#'+id.chart['renderTo']).after().append(table);
+		$('#'+obj.chart['renderTo']).after().append(table);
 }
 //Implementation ------------------------------------------------------------------------------------------------------------------------------------------------
 $('document').ready(function(){

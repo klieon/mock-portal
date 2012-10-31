@@ -11,7 +11,7 @@
 </p>
 <div id="questions" style="width: 100%;">
 	<div class="chart" id="survey1">
-		<p>ECB Self-Assessment Agency Level: 2011</p>
+		<p>ECB Self-Assessment Consortia Level: Multi-Language July 2011</p>
 		<div class="question">
 			<div id="chart1"></div>
 		</div><!-- .question -->
@@ -27,7 +27,7 @@
 	</div><!-- #survey1 -->
 
 	<div class="chart" id="survey2">
-		<p>Survey 2</p>
+		<p>ECB Self-Assessment Agency Level: 2011</p>
 		<div class="question">
 			<div id="chart5"></div>
 		</div><!-- .question -->
@@ -43,7 +43,7 @@
 	</div><!-- #survey2 -->
 
 	<div class="chart" id="survey3">
-		<p>Survey 3</p>
+		<p>ECB Self-Assessment Country Level: Multi-Language July 2011</p>
 		<div class="question">
 			<div id="chart9"></div>
 		</div><!-- .question -->

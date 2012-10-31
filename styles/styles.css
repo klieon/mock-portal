@@ -535,6 +535,9 @@ body {
   border-bottom: 1px solid #4b719f;
   color: #222;
 }
+#questions .question table tr.total td {
+  font-weight: bold;
+}
 #questions .question:nth-child(1) {
   margin-top: 0;
 }
