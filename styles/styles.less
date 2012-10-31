@@ -81,8 +81,18 @@ h1, h2, h3, h4 { margin: 4px 0 0 0; }
 		text-shadow: 0px 0px 2px black;
 		margin: 5px 0 0 0;
 }
+.striper(@topColor, @bottomColor){
+	border-top: 1px solid @topColor;
+	border-bottom: 1px solid @bottomColor;
+	padding: 6px 0;
+	margin: 0;
+}
+.stripes li, .stripes td {
+	.striper(#dcdcdc, #fff);
+}
 /*-- Colors -------------------------------------------------------------------------------------------------*/
 @accent_color: #e06f1d;
+@tableHeader: #7798bf;
 
 
 body {
@@ -179,10 +189,7 @@ body {
 		li {
 			list-style: none;
 			font-size: 10pt;
-			border-bottom: 1px solid white;
-			border-top: 1px solid #dcdcdc;
-			padding: 6px 0;
-			margin: 0;
+			
 
 			&.first {
 				border-top: none;
@@ -191,8 +198,8 @@ body {
 				border-bottom: none;
 			}
 			&.user {
-				background: url('../imgs/user.png') no-repeat 0 4px;
-				padding-left: 24px;
+				background: url('../imgs/user.png') no-repeat 0 0px;
+				padding: 2px 0 0px 24px;
 			}
 			&.excel {
 				background: url('../imgs/excel.png') no-repeat 0 4px;
@@ -303,10 +310,43 @@ body {
 			font-size: 12pt;
 			text-transform: uppercase;
 			margin: 0 0 7px 0;
-			color: #555;
+			color: #EEE;
 			padding: 10px 10px 8px;
-			border: 1px solid #777;
-			background: #eee;
+			border: 1px solid black;
+			background: #333;
+			text-shadow: 1px 1px 0px black;
+		}
+		table {
+			margin: 10px 0 0 0;
+			background: #EEE;
+			border: 1px solid #555;
+			tr {
+				td {
+					color: #333;
+					padding: 4px 0;
+					&:first-child{
+						padding-left: 4px;
+					}
+					&:nth-child(2),&:nth-child(3){
+						text-align: center;
+					}
+				}
+				&.question_title td{
+					background: #EEE;
+					padding: 10px 0 10px 4px;
+					text-transform: uppercase;
+					font-weight: bold;
+					font-family: helvetica, arial, sans-serif;
+					font-size: 11pt;
+					color: #333;
+				}
+				&.headings td {
+					background: lighten(@tableHeader, 15%);
+					border-top: 1px solid darken(@tableHeader, 15%);
+					border-bottom: 1px solid darken(@tableHeader, 15%);
+					color: #222;
+				}
+			}
 		}
 	}
 	& .question:nth-child(1){

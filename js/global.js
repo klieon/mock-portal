@@ -192,19 +192,67 @@ function toggleContent(selector){
 		$(selector, '#body .inner').css('visibility','visible').fadeIn('fast');
 	});
 }
-//Implementation ------------------------------------------------------------------------------------------------------------------------------------------------
-$('document').ready(function(){
-	//Initialize:
-	//Render the charts
+function striper(element, start){
+	var el = '', parent = '';
+	switch(typeof(element)){
+		case 'table': 
+				el = 'td';
+			parent = 'tr';
+		break;
+		case 'ul':
+			el = 'li';
+		parent = 'ul';
+		break;
+	}
+	if(parent == 'ul'){
+		$(el+':first').addClass('first');
+		$(el+':last').addClass('last');	
+	} else if(parent == 'tr'){
+		$(parent+':first').addClass('first');
+		$(parent+':last').addClass('last');
+	}
+	
+	$(el+':odd').after(start).addClass('odd');
+}
+function renderCharts(){
+	console.log('rendering charts');
 	if($('.chart').length > 0){
 		// globally available
 		var charts = ['chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'chart6', 'chart7', 'chart8', 'chart9', 'chart10', 'chart11', 'chart12']; 
 		for(var i = 0; i < charts.length; i++){
+			console.log('#'+charts[i], '<p>'+data[charts[i]].questionData.name+'</p>');
 			window.chart = charts[i];
-			console.log(chart);
 			chart = new Highcharts.Chart(data[chart]);
+			$('#'+charts[i]).before().prepend('<p>'+data[charts[i]].questionData.name+'</p>');
 		}
+		processTable(data);
 	} //close chart check
+}
+function processTable(obj){
+	for(node in obj){
+		renderTable(data[node], data[node].questionData);
+	}
+}
+function renderTable(id, tableData){
+	var table = '', rows = '';
+	var tableStart			= '<table width="100%" cellpadding="0" cellspacing="0" class="'+id.chart["renderTo"]+' stripes">',
+		question_title		= '<tr class="question_title"><td>'+tableData.name+'</td></tr>',
+		headings 			= '<tr class="headings"><td>Answer Options</td><td>Response Percent</td><td>Response</td></tr>';
+	
+		for(i = 0; i < tableData.choices.length; i++){
+			console.log(tableData.name);
+			rows += '<tr class="response"><td>'+tableData.choices[i]+'</td>'+ '<td>' + 16.7 +'%</td>' + '<td>'+ 1 + '</td></tr>';
+		}
+		table += tableStart + question_title + headings + rows + '</table>';
+		$('#'+id.chart['renderTo']).after().append(table);
+}
+//Implementation ------------------------------------------------------------------------------------------------------------------------------------------------
+$('document').ready(function(){
+	//Initialize:
+	//Render the charts
+	renderCharts();
+	//striper(['#sidebar ul', '#questions question table']);
+	
 	//hide some stuff
 	$('#questions .chart, #all_users, #raw_question_data', '#body .inner').css('visibility', 'hidden');
 	$('#questions').hide().css('visibility', 'visible');

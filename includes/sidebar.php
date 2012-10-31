@@ -14,7 +14,7 @@
 	<ul id="admin_controls">
 		<li class="user"><a href="all_users">All Users</a></li>
 	</ul><!-- #admin-controls -->
-	<ul id="stats">
+	<ul id="stats" class="stripes">
 		<li class="excel"><a href="raw_question_data">Raw Question Data</a></li>
 		<li>Invited / Completed: <span>1500 / 1248</span></li>
 		<li>Survey Status: <span>Active</span></li>
