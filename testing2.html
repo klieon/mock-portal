@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>testing this thing</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+		<script>
+		$(function() {
+		
+			$("#text-one").change(function() {
+				$("#text-two").load("textdata/" + $(this).val() + ".txt");
+			});
+			
+			$("#json-one").change(function() {
+			
+				var $dropdown = $(this);
+			
+				$.getJSON("js/data2.json", function(data) {
+				
+					var key = $dropdown.val();
+					var vals = [];
+										
+					switch(key) {
+						case 'Organizations':
+							vals = data.Organizations.split(",");
+							break;
+						case 'Countries':
+							vals = data.Countries.split(",");
+							break;
+						case 'Branches':
+							vals = ['Please choose from above'];
+					}
+					
+					var $jsontwo = $("#json-two");
+					$jsontwo.empty();
+					$.each(vals, function(index, value) {
+						$jsontwo.append("<option>" + value + "</option>");
+					});
+
+
+			
+				});
+			});
+
+			$("#json-two").change(function() {
+			
+				var $dropdown = $(this);
+
+					var $jsonthree = $("#json-three");
+					$jsonthree.empty();
+					$.each(vals, function(index, value) {
+						$jsonthree.append("<option>" + value + "</option>");
+					});
+
+			});
+			
+			$("#db-one").change(function() {
+				$("#db-two").load("getter.php?choice=" + $("#db-one").val());
+			});
+		
+		});
+	</script>
+
+
+
+<body>
+
+
+		<select id="json-one">
+			<option selected value="base">Please Select an </option>
+			<option value="Organizations">Organizations</option>
+			<option value="Countries">Countries</option>
+		</select>
+	
+		<br />
+	
+		<select id="json-two">
+			<option>Please choose from above</option>
+		</select>
+
+		<br />
+
+		<select id="json-three">
+			<option>Please choose from above</option>
+		</select>
+
+
+
+</body>
+</html>
