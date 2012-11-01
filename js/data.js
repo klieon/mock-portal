@@ -139,10 +139,10 @@ var data = {
 		}
 	},
 	chart3: {
-			chart: {
-			renderTo: 'chart3',
-			type: 'bar'
-		},
+			//chart: {
+			//renderTo: 'chart3',
+			//type: 'bar'
+			//},
 			title: {
 			text: 'Name of organisational department or division completing the survey'
 			},
@@ -612,7 +612,7 @@ var data = {
 				count: 3
 			}],
 			answeredQuestions: 6,
-			skippedQuestions: 0,
+			skippedQuestions: 0
 		}
 	},
 	chart11: {
@@ -733,4 +733,4 @@ var data = {
 			skippedQuestions: 0
 		}
 	}
-} //ends data wrapper
+}; //ends data wrapper

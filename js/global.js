@@ -215,6 +215,13 @@ function striper(element, start){
 	
 	$(el+':odd').after(start).addClass('odd');
 }
+function hasChart(obj){
+	if(obj.hasOwnProperty('chart')){
+		return true;
+	} else {
+		return false;
+	}
+}
 function renderCharts(){
 	if($('.chart').length > 0){
 		// globally available
@@ -222,15 +229,20 @@ function renderCharts(){
 		for(var i = 0; i < charts.length; i++){
 			//console.log('#'+charts[i], '<p>'+data[charts[i]].questionData.name+'</p>');
 			window.chart = charts[i];
-			chart = new Highcharts.Chart(data[chart]);
+			if(hasChart(data[charts[i]])){
+				chart = new Highcharts.Chart(data[chart]);
+			}
 			$('#'+charts[i]).before().prepend('<p>'+data[charts[i]].questionData.name+'</p>');
 		}
 		processTable(data);
 	} //close chart check
 }
 function processTable(obj){
+	console.log(obj);
 	for(node in obj){
-		renderTable(data[node], data[node].questionData);
+		//console.log(data[node].hasOwnProperty('chart'));
+		var id = (!data[node].hasOwnProperty('chart')) ? node : false;
+		renderTable(data[node], data[node].questionData, id);
 	}
 }
 function calculateTotal(count, responses){
@@ -240,10 +252,12 @@ function calculateTotal(count, responses){
 	}
 	return total;
 }
-function renderTable(obj, tableData){
-	//console.log('rendering table. tableData is: ', tableData);
+function renderTable(obj, tableData, id){
+	var chartClass = (typeof(id) == 'string') ? id : obj.chart["renderTo"];
+		
+	//if(hasChart(obj)) { chartClass = obj.chart["renderTo"] } else { chartClass = 'noChart' }
 	var table = '', rows = '', choices = tableData.choices;
-	var tableStart			= '<table width="100%" cellpadding="0" cellspacing="0" class="'+obj.chart["renderTo"]+' stripes">',
+	var tableStart			= '<table width="100%" cellpadding="0" cellspacing="0" class="'+ chartClass +' stripes">',
 		question_title		= '<tr class="question_title"><td>'+tableData.name+'</td></tr>',
 		headings 			= '<tr class="headings"><td>Answer Options</td><td>Response Percent</td><td>Response</td></tr>';
 		
@@ -257,7 +271,7 @@ function renderTable(obj, tableData){
 		}
 		rows += '<tr class="total"><td></td><td>Total Responses</td>' + '<td>'+ total + '</td></tr>'
 		table += tableStart + question_title + headings + rows + '</table>';
-		$('#'+obj.chart['renderTo']).after().append(table);
+		$('#'+chartClass).after().append(table);
 }
 function resetAclForm(){
 	$('#success', '#acl_controls').removeAttr('style').fadeOut();
@@ -311,7 +325,7 @@ $('document').ready(function(){
 			authenticate();
 		});
 	//Get the selection
-	$('.jqTransformSelectWrapper ul li a').click(function(){ 
+	$('.jqTransformSelectWrapper ul li a', '#survey_selection').click(function(){ 
 			var option = grabOption($(this));
 			toggleChart(option);
 	});
