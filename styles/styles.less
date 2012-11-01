@@ -230,7 +230,7 @@ body {
 	.inner {
 		/* width: 95%; */
 		width: 95%;
-		margin: 8px auto 40px;
+		margin: 0px auto 40px;
 
 		.error {
 			display: none;
@@ -346,6 +346,9 @@ body {
 					border-bottom: 1px solid darken(@tableHeader, 15%);
 					color: #222;
 				}
+				&.total td {
+					font-weight: bold;
+				}
 			}
 		}
 	}
@@ -356,6 +359,7 @@ body {
 		& > p {
 			font-size: 15pt;
 			font-weight: bold;
+			margin-top: 25px;
 		}
 	}
 }
@@ -388,7 +392,7 @@ body {
 	}
 }
 #list_users {
-	margin-top: 25px;
+	margin-top: 0px;
 	table#users {
 		background: #eee;
 		border-bottom: 1px solid #777;
@@ -417,14 +421,51 @@ body {
 			}
 		}
 	}
-	#user_controls {
-		li {
-			float: left;
-			margin: 0 360px 0 0;
+}
+#all_users {
+		#acl_controls {
+			height: 0;
+			overflow: hidden;
+			background: #333;
+			border: 1px solid #000;
+			border-top: 0px;
+			border-bottom: 0px;
+			color: #eee;
+			padding: 0 7px 0 7px;
 
-			&:last-child{
-				margin-right: 0;
+			form {
+				width: 400px;
+				margin: 0 0 0 265px;
+				float: left;
+					input[type="text"]{
+					border: 1px solid black;
+					padding: 5px 10px;
+					display: block;
+					width: 90%;
+					background: #EEE;
+					font-size: 14pt;
+					font-weight: normal;
+				}
 			}
+		}
+		.acl_controls {
+			display: block;
+			background: #333;
+			padding: 10px 0 7px 0;
+			text-align: center;
+			color: white;
+			text-shadow: 1px 1px 1px black;
+			border-radius: 0 0 9px 9px;
+			border: 1px solid black;
+			border-top: 0;
+			margin-bottom: 10px;
+		}
+	#user_controls {
+		width: 100px;
+		float: right;
+		margin: 0 19px 0 0;
+		li {
+			margin: 0;
 		}
 		#update input{
 		.button(#eee, #00692C, #0079C1, #00A1FF, 5px);
@@ -434,6 +475,27 @@ body {
 		}
 		#delete input{
 		.button(#eee, #A31415, desaturate(#ff0024, 10%), #c5031b, 5px);
+		}
+		input {
+			margin: 0;
+			min-width: 75px;
+		}
+	}
+	#success {
+		width: 400px;
+		margin: 0 auto;
+		border: 4px solid green;
+		padding: 4px 10px;
+		line-height: 1.4;
+		background: black;
+		display: none;
+
+		h1 {
+			font-size: 17pt;
+			font-weight: bold;
+		}
+		p{
+			text-align: center;
 		}
 	}
 }

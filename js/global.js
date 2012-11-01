@@ -1,6 +1,6 @@
 //App Functions
 function toggleForm(status){
-	console.log('toggleForm', status);
+	//console.log('toggleForm', status);
 	var login = $('#login'),
 		$login = $(login);
 	//If they arent logged in show the form
@@ -18,7 +18,7 @@ function authenticate(){
 	//Show or hide elements based on CONFIG.user.status
 	var name = $('input#username').val(),
 		pass = $('input#password').val();
-		//CONFIG.user.password = pass;
+		CONFIG.user.password = pass;
 		switch(name){
 			case 'root':
 				usr_role = 0;
@@ -40,10 +40,15 @@ function authenticate(){
 				CONFIG.user.role = usr_role;
 				switchState('login');
 			} else { 
-				error(); 
+				//This will only fire once you check against a pw
+				error();
 			}
 		} else {
-			switchState('log out');
+			if(CONFIG.user.username == "" || CONFIG.user.username == null){
+				error();	
+			} else {
+				switchState('log out');
+			}
 		}
 }
 function login(){
@@ -139,7 +144,7 @@ function executePriveleges(role){
 
 //Handles switching charts in the #body
 function toggleChart(chart){
-	console.log('toggling chart', chart);
+	//console.log('toggling chart', chart);
 	var targets = $('#questions .chart, .priveleged', '#body');
 	$(targets).removeAttr('style').css('width', '100%').fadeOut('fast',function(){
 		var questions = $('#questions .question, #questions > div');
@@ -170,12 +175,8 @@ function listUsers(target){
 			form += row;
 			counter++;
 		}
-		form += '</table><ul id="user_controls">';
-		form += '<li id="update"><input type="submit" name="update" value="update"></li>';
-		form += '<li id="deactivate"><input type="submit" name="deactivate" value="deactivate"></li>';
-		form += '<li id="delete"><input type="submit" name="delete" value="delete"></li>';
-		form += '</ul></form>';
-	$(target).html(form);
+		form += '</table></form>';
+	$(target).append(form);
 }
 //Toggles Generic Content in the #body .inner
 function toggleContent(selector){
@@ -214,37 +215,80 @@ function striper(element, start){
 	
 	$(el+':odd').after(start).addClass('odd');
 }
+function hasChart(obj){
+	if(obj.hasOwnProperty('chart')){
+		return true;
+	} else {
+		return false;
+	}
+}
 function renderCharts(){
-	console.log('rendering charts');
 	if($('.chart').length > 0){
 		// globally available
 		var charts = ['chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'chart6', 'chart7', 'chart8', 'chart9', 'chart10', 'chart11', 'chart12']; 
 		for(var i = 0; i < charts.length; i++){
-			console.log('#'+charts[i], '<p>'+data[charts[i]].questionData.name+'</p>');
+			//console.log('#'+charts[i], '<p>'+data[charts[i]].questionData.name+'</p>');
 			window.chart = charts[i];
-			chart = new Highcharts.Chart(data[chart]);
+			if(hasChart(data[charts[i]])){
+				chart = new Highcharts.Chart(data[chart]);
+			}
 			$('#'+charts[i]).before().prepend('<p>'+data[charts[i]].questionData.name+'</p>');
 		}
 		processTable(data);
 	} //close chart check
 }
 function processTable(obj){
+	console.log(obj);
 	for(node in obj){
-		renderTable(data[node], data[node].questionData);
+		//console.log(data[node].hasOwnProperty('chart'));
+		var id = (!data[node].hasOwnProperty('chart')) ? node : false;
+		renderTable(data[node], data[node].questionData, id);
 	}
 }
-function renderTable(id, tableData){
-	var table = '', rows = '';
-	var tableStart			= '<table width="100%" cellpadding="0" cellspacing="0" class="'+id.chart["renderTo"]+' stripes">',
+function calculateTotal(count, responses){
+	var total = 0;
+	for(var i = 0; i < count; i++){	
+		total = total + responses[i].count;
+	}
+	return total;
+}
+function renderTable(obj, tableData, id){
+	var chartClass = (typeof(id) == 'string') ? id : obj.chart["renderTo"];
+		
+	//if(hasChart(obj)) { chartClass = obj.chart["renderTo"] } else { chartClass = 'noChart' }
+	var table = '', rows = '', choices = tableData.choices;
+	var tableStart			= '<table width="100%" cellpadding="0" cellspacing="0" class="'+ chartClass +' stripes">',
 		question_title		= '<tr class="question_title"><td>'+tableData.name+'</td></tr>',
 		headings 			= '<tr class="headings"><td>Answer Options</td><td>Response Percent</td><td>Response</td></tr>';
-	
-		for(i = 0; i < tableData.choices.length; i++){
-			console.log(tableData.name);
-			rows += '<tr class="response"><td>'+tableData.choices[i]+'</td>'+ '<td>' + 16.7 +'%</td>' + '<td>'+ 1 + '</td></tr>';
+		
+		//Calculate the total number of responses
+		var total = calculateTotal(choices.length, tableData.responses);
+
+		//Calculate response rate and print the rows 
+		for(var i = 0; i < choices.length; i++){
+			var rate = ((tableData.responses[i].count / total) * 100).toPrecision(3);
+				rows += '<tr class="response"><td>'+choices[i]+'</td>'+ '<td>' + rate +'%</td>' + '<td>'+ tableData.responses[i].count + '</td></tr>';
 		}
+		rows += '<tr class="total"><td></td><td>Total Responses</td>' + '<td>'+ total + '</td></tr>'
 		table += tableStart + question_title + headings + rows + '</table>';
-		$('#'+id.chart['renderTo']).after().append(table);
+		$('#'+chartClass).after().append(table);
+}
+function resetAclForm(){
+	$('#success', '#acl_controls').removeAttr('style').fadeOut();
+	$('form, #user_controls', '#acl_controls').removeAttr('style');
+}
+function aclFormSuccess(){
+	var timer = window.setTimeout(function(){
+		console.log('in the timer callback');
+		$('#acl_controls').animate({
+			paddingTop: 0,
+			height: 0
+		}, 'fast', function(){
+			$('#acl_controls').removeAttr('style');
+			resetAclForm();
+			window.clearTimeout(timer);
+		});
+	}, 2000);
 }
 //Implementation ------------------------------------------------------------------------------------------------------------------------------------------------
 $('document').ready(function(){
@@ -281,7 +325,7 @@ $('document').ready(function(){
 			authenticate();
 		});
 	//Get the selection
-	$('.jqTransformSelectWrapper ul li a').click(function(){ 
+	$('.jqTransformSelectWrapper ul li a', '#survey_selection').click(function(){ 
 			var option = grabOption($(this));
 			toggleChart(option);
 	});
@@ -291,4 +335,19 @@ $('document').ready(function(){
 		var selector = '#' + $(this).attr('href');
 		toggleContent(selector);
 	});
+	//All users update
+	$('a.acl_controls').on('click', function(e){
+		e.preventDefault();
+		console.log('click');
+		$(this).prev().animate({
+			height: '225',
+			paddingTop: '10'
+		});
+	});
+	$('#user_controls').on('click', function(event){
+		event.preventDefault();
+		$('form, #user_controls', '#acl_controls').fadeOut('fast', function(){
+			$('#success', '#acl_controls').fadeIn('fast', aclFormSuccess());
+		});
+	})
 });
