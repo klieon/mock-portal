@@ -1,0 +1,1 @@
+$("document").ready(function(){$("#box").change(function(){$("#details").empty();buildDetails(1)})});

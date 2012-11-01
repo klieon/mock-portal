@@ -104,6 +104,14 @@ function grabOption($this){
 		selection = $('select option:contains(' + target +  ')', '#survey_selection').attr('value');
 		return selection;
 }
+
+function grabOption2($this){
+	$that = $this;
+	var target = $that.text(),
+		selection = $('select option:contains(' + target +  ')', '#org_selection').attr('value');
+		return selection;
+}
+
 //Accepts a role, builds the content of all the allowed modules that role is allowed to see.
 function executePriveleges(role){
 	//Build an array for each type of user: what each role is allowed to see.
@@ -215,6 +223,7 @@ function striper(element, start){
 	
 	$(el+':odd').after(start).addClass('odd');
 }
+
 function hasChart(obj){
 	if(obj.hasOwnProperty('chart')){
 		return true;
@@ -329,6 +338,13 @@ $('document').ready(function(){
 			var option = grabOption($(this));
 			toggleChart(option);
 	});
+	
+	 $('#link').on('click', function(){
+ 			var url = $("select#report").attr('value'); 
+            console.log(url);
+            toggleChart(url);
+         return false;
+      });
 	//Sidebar controls
 	$('#stats a, #admin_controls a', '#sidebar .priveleged').on('click', function(event){
 		event.preventDefault();

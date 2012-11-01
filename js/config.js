@@ -13,6 +13,27 @@ var CONFIG = function(module){
 			1: 'admin',
 			2: 'manager',
 			3: 'user'
+		},
+		orgs: {
+			0: 'Org1', //CONFIG.orgs[0]
+			1: 'Org2',
+			2: 'Org3',
+			3: 'Org4'
+		},
+		countries:{
+				0:'Britain',
+				1:'USA',
+				2:'France',
+				3:'China',
+				4:'back'
+			},
+		branches:{
+				0: '#survery1',
+				1: '#survery2',
+				2: '#survery3',
+				3: '#survery4',
+				4: 'back'
+
 		}
 	}	
 	return module;
